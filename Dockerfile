@@ -2,6 +2,7 @@ FROM ubuntu:23.04
 
 COPY src/ViReMa_0.25 .
 COPY src/READS .
+COPY src/align.sh .
 COPY src/bowtie-0.12.9 usr/local/bin/bowtie-0.12.9
 COPY src/Trimmomatic-0.39 usr/local/bin/Trimmomatic-0.39
 # Add bowtie to PATH
