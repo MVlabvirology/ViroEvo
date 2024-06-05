@@ -1,7 +1,7 @@
 FROM ubuntu:23.04
 
 COPY src/ViReMa_0.25 .
-COPY src/TestData .
+COPY src/READS .
 COPY src/bowtie-0.12.9 usr/local/bin/bowtie-0.12.9
 COPY src/Trimmomatic-0.39 usr/local/bin/Trimmomatic-0.39
 # Add bowtie to PATH
@@ -42,12 +42,10 @@ RUN chmod 777 /usr/local/bin/bowtie-0.12.9/bowtie-build
 RUN conda install -y bioconda::bwa-mem2
 RUN conda install -y python=3.10.6
 RUN conda config --add channels conda-forge
-RUN conda update -n base --all
-RUN conda install -n base mamba
+RUN conda update -y -n base --all
+RUN conda install -y -n base mamba
 RUN conda install -y -c bioconda bowtie2
 RUN apt update && apt install less
-
-ENV PATH="${PATH}:/usr/local/bin/bwa"
 
 # Install minimap2 binary; make /data
 ARG MINIMAP2_VER="2.24"
