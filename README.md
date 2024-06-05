@@ -110,3 +110,11 @@ Sotcheff S, Zhou Y, Sun Y, Johnson JE, Torbett B, Routh AL. ViReMa: A Virus Reco
 Andrew Routh, John E. Johnson, Discovery of functional genomic motifs in viruses with ViReMa-a Virus Recombination Mapper-for analysis of next-generation sequencing data, Nucleic Acids Research, Volume 42, Issue 2, 1 January 2014, Page e11, https://doi.org/10.1093/nar/gkt916
 
 <br>
+
+
+Create a new token at Personal access tokens
+Copy token (Windows: Ctrl + C, macOS: Cmd + C, or click copy icon)
+Try to push your local repository: git push
+Enter your GitHub user name
+Paste the token as your password
+
