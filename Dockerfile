@@ -13,21 +13,20 @@ ENV PATH="/usr/local/bin/Trimmomatic-0.39:$PATH"
 RUN apt-get update && apt-get install -y \
   curl \
   unzip \
-  vim   \
+  vim \
+  pip \
   python3-pip \
   samtools \
   bzip2 && \
   apt-get autoclean && rm -rf /var/lib/apt/lists/*
 
 # Installs numpy
-RUN pip install numpy
 
 ENV PATH="/root/miniconda3/bin:${PATH}"
 ARG PATH="/root/miniconda3/bin:${PATH}"
 RUN apt-get update
 
 RUN apt-get install -y wget && rm -rf /var/lib/apt/lists/*
-
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && mkdir /root/.conda \
@@ -35,18 +34,19 @@ RUN wget \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
 
 RUN conda --version
-RUN conda install bioconda/label/cf201901::trimmomatic
-
+RUN conda install -y bioconda/label/cf201901::trimmomatic
+RUN conda install -y numpy
 RUN chmod 777 /usr/local/bin/bowtie-0.12.9/bowtie
 RUN chmod 777 /usr/local/bin/bowtie-0.12.9/bowtie-inspect
 RUN chmod 777 /usr/local/bin/bowtie-0.12.9/bowtie-build
-RUN conda install bioconda::bwa-mem2
-RUN conda install python=3.10.6
+RUN conda install -y bioconda::bwa-mem2
+RUN conda install -y python=3.10.6
 RUN conda config --add channels conda-forge
 RUN conda update -n base --all
 RUN conda install -n base mamba
-RUN conda install -c bioconda bowtie2
-RUN conda install dhirschfeld::less
+RUN conda install -y -c bioconda bowtie2
+RUN apt update && apt install less
+
 ENV PATH="${PATH}:/usr/local/bin/bwa"
 
 # Install minimap2 binary; make /data
@@ -55,3 +55,4 @@ RUN curl -L https://github.com/lh3/minimap2/releases/download/v${MINIMAP2_VER}/m
  mkdir /data
 
 ENV PATH="${PATH}:/minimap2-${MINIMAP2_VER}_x64-linux"
+                                                       
