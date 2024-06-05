@@ -9,14 +9,14 @@ The above repository contains a Dockerfile for runninng an analysis of recombina
 **Docker** makes setting up and detecting viral recombination events with ViReMa easy. Having a Docker container handles installation of program dependencies and versioning. Additionally, containers can be run on Windows, Mac, and Linux operating systems.
 
 ## **Setup (~10 minutes)**
-1. Download [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+1. Download [Docker Desktop](https://www.docker.com/products/docker-desktop/) for you OS.
 2. Download this GitHub repository's files as a .zip file and unzip it as a new folder.
 3. Open the command line/prompt on your operating system. The next three steps involve entering lines into the command line.
-4. Change the current directory using the command line to the folder you just unzipped with the file "virema" and the folder "src". This command looks something like ```cd C:\Users\user\Documents\GitHub\ViReMaDocker``` replacing "C:\Users\user\Documents\GitHub\ViReMaDocker" with your folder path.
-5. Now, build the image with ```docker build -t virema . -f Dockerfile```. If you want to add your own data first, add appropriate files to the "src/TestData" folder before building the image. Messages should indicate if everything builds smoothly. Here, the "virema" after "-t" can be replaced with whatever text you would like to name/tag the container with.
-6. You can now make a container using ```docker run -d -t Dockerfile``` or by going to the "Images" tab in Docker Desktop and hitting "Run" when hovering over the "virema" image.
-7. Type ```docker exec -it <container-id> python ./ViReMa.py ./FHV_Genome_padded ./FHV_10k.txt FHV_recombinations.SAM --Seed 20 --MicroInDel_Length 5 -BED --Output_Dir FHV_Test``` into the operating system command line/prompt replacing "```<container-id>```" with your container id (use ```docker container ls``` and copy the container id for the "virema" container). 
-9. If you've been doing option **(b)**, go back to the command line on your operating system. The next two steps involve entering lines into the command line.
+4. Change the current directory using the command line to the folder you just unzipped with the file "virema" and the folder "src". This command looks something like ```cd C:\Users\user\Documents\GitHub\MVlabvirology\ViroEvo``` replacing "C:\Users\user\Documents\GitHub\MVlabvirology\ViroEvo" with your folder path.
+5. Now, build the image with ```docker build -t virema . -f Dockerfile```. If you want to add your own data first, add appropriate files to the "src/READS" folder before building the image. Messages should indicate if everything builds smoothly. Here, the "virema" after "-t" can be replaced with whatever text you would like to name/tag the container with.
+6. You can now make a container using ```docker run -d -t virema``` or by going to the "Images" tab in Docker Desktop and hitting "Run" when hovering over the "virema" image.
+7. Type ```docker ps``` to obtain container ID and then ```docker exec -it <container-id> bash. 
+8. Enter inside the container and run the ```align.sh``` bash script to run the pipeline
 10. With the container still running, use ```docker container ls``` and copy the container id for the "virema" container.
 11. Export your files from the container to your computer. Use the command ```cd C:\Users\user\Documents\Results``` replacing "C:\Users\user\Documents\Results" with where you want the folder to show up on your local machine.  Run ```docker cp <container-id>:/FHV_Test .```, replacing "```<container-id>```" with the container id from Step 10. The "." puts the files into the local directory we just used "cd" to get into.
 12. When finished, stop the container in Docker Desktop or using the command line (```docker stop <container-id>```).
