@@ -10,7 +10,7 @@ The above repository contains a Dockerfile for runninng an analysis of recombina
 
 ## **Setup (~10 minutes)**
 1. Download [Docker Desktop](https://www.docker.com/products/docker-desktop/) for you OS.
-2. Download this GitHub repository's files as a .zip file and unzip it as a new folder.
+2. Download this GitHub repository's files ```git clone https://github.com/MVlabvirology/ViroEvo.git```
 3. Open the command line/prompt on your operating system. The next three steps involve entering lines into the command line.
 4. Change the current directory using the command line to the folder you just unzipped with the file "virema" and the folder "src". This command looks something like ```cd C:\Users\user\Documents\GitHub\MVlabvirology\ViroEvo``` replacing "C:\Users\user\Documents\GitHub\MVlabvirology\ViroEvo" with your folder path.
 5. Now, build the image with ```docker build -t virema . -f Dockerfile```. If you want to add your own data first, add appropriate files to the "src/READS" folder before building the image. Messages should indicate if everything builds smoothly. Here, the "virema" after "-t" can be replaced with whatever text you would like to name/tag the container with.
