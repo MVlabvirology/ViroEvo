@@ -22,7 +22,7 @@ The above repository contains a Dockerfile for runninng an analysis of recombina
 11. Export your files from the container to your computer. Use the command ```cd C:\Users\user\Documents\Results``` replacing "C:\Users\user\Documents\Results" with where you want the folder to show up on your local machine.  Run ```docker cp <container-id>:/FHV_Test .```, replacing "```<container-id>```" with the container id from Step 10. The "." puts the files into the local directory we just used "cd" to get into.
 12. When finished, stop the container in Docker Desktop or using the command line (```docker stop <container-id>```).
 
-## **UPLOAD FILES**
+## **UPLOAD FASTQ GZIPPED FILES**
 ```for f in *gz; do sudo docker cp $f <container-id>`:/; done```
 ## **Analysis**
 You can then create figures and visualizations with the newly created files by following tutorials [here](https://jayeung12.github.io/).
