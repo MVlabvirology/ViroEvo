@@ -23,7 +23,7 @@ The above repository contains a Dockerfile for runninng an analysis of recombina
 12. When finished, stop the container in Docker Desktop or using the command line (```docker stop <container-id>```).
 
 ## **UPLOAD FILES**
-```for f in *gz; do sudo docker cp $f f782ebd1d6e1:/; done```
+```for f in *gz; do sudo docker cp $f <container-id>`:/; done```
 ## **Analysis**
 You can then create figures and visualizations with the newly created files by following tutorials [here](https://jayeung12.github.io/).
 
